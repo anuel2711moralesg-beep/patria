@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patria Milagro System</title>
+    <style>
+        body {
+            background-color: #0b0f19;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+            overflow: hidden;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        .contenedor {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            cursor: pointer;
+        }
+        img {
+            width: 80%;
+            max-width: 320px;
+            border-radius: 15px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+            pointer-events: none;
+        }
+        h1 {
+            font-size: 1.6rem;
+            margin-top: 25px;
+            padding: 0 20px;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            line-height: 1.3;
+        }
+        p {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="contenedor" id="pantalla">
+        <!-- Imagen en servidor público estable -->
+        <img src="https://postimg.cc" alt="Abelardo">
+        
+        <h1>¡BIENVENIDO A LA PATRIA, MILAGRO!</h1>
+        <p>🔊 Toca cualquier parte para escuchar</p>
+    </div>
+
+    <!-- Audio del meme original alojado en internet -->
+    <audio id="audioMeme" src="https://archive.org" preload="auto"></audio>
+
+    <script>
+        var audio = document.getElementById('audioMeme');
+        var pantalla = document.getElementById('pantalla');
+
+        function reproducirMeme(e) {
+            e.preventDefault();
+            audio.currentTime = 0; 
+            audio.play().catch(function(error) {
+                console.log("Error de audio:", error);
+            });
+        }
+
+        pantalla.addEventListener('click', reproducirMeme);
+        pantalla.addEventListener('touchstart', reproducirMeme, {passive: false});
+    </script>
+
+</body>
+</html>
